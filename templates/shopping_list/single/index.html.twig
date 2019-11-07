@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shopping List{% endblock %}
+
+{% block body %}
+
+    <h1>{{ shoppingList.name }}</h1>
+    <span>{{ shoppingList.createdAt|date("d.m.Y H:i") }}</span>
+
+    <ul>
+    {% for item in items %}
+        <li>{{ item.name }} | {{ item.quantity }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ path("shopping_list") }}" class="button">Back</a>
+
+{% endblock %}

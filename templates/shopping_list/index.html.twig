@@ -6,8 +6,10 @@
 
     <ul>
     {% for list in shoppingLists %}
-        <li>{{ list.name }}</li>
+        <li><a href="{{ path("shopping_list_single", {"id": list.id}) }}">{{ list.name }}</a></li>
     {% endfor %}
     </ul>
+
+    <a href="{{ path("shopping_list_new") }}" class="button">Add new list</a>
 
 {% endblock %}

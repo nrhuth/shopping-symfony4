@@ -52,4 +52,21 @@ class ShoppingListController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/shopping-list/{id}/", name="shopping_list_single")
+     */
+    public function single($id)
+    {
+        /** @var ShoppingList $shoppingList */
+        $shoppingList = $this->getDoctrine()->getRepository(ShoppingList::class)->findOneById($id);
+
+        $items = $shoppingList->getItem();
+
+        return $this->render('shopping_list/single/index.html.twig', [
+            'controller_name' => 'ShoppingListController',
+            'items' => $items,
+            'shoppingList' => $shoppingList
+        ]);
+    }
 }
